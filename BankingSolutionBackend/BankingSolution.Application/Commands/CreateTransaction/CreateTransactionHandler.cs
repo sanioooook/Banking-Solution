@@ -30,7 +30,7 @@ public class CreateTransactionHandler : ICommandHandler<CreateTransactionCommand
         }
         else if (command.FromAccountId.HasValue)
         {
-            var fromAccount = await _accountRepo.GetByIdAsync(command.ToAccountId, cancellationToken)
+            var fromAccount = await _accountRepo.GetByIdAsync(command.FromAccountId.Value, cancellationToken)
                               ?? throw new Exception("From Account not found");
             await Transfer(fromAccount, account, command.Amount, cancellationToken);
         }

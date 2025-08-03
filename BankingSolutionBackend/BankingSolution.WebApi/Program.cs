@@ -40,7 +40,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddValidatorsFromAssemblyContaining<CreateTransactionValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateAccountValidator>();
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddFluentValidationClientsideAdapters();
 

@@ -2,9 +2,9 @@
 
 using FluentValidation;
 
-public class CreateTransactionValidator : AbstractValidator<CreateAccountCommand>
+public class CreateAccountValidator : AbstractValidator<CreateAccountCommand>
 {
-    public CreateTransactionValidator()
+    public CreateAccountValidator()
     {
         RuleFor(x => x.OwnerName)
             .NotEmpty()

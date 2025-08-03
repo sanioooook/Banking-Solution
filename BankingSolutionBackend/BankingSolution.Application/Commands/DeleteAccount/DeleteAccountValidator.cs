@@ -10,6 +10,7 @@ public class DeleteAccountValidator : AbstractValidator<DeleteAccountCommand>
             .NotEmpty()
             .NotNull()
             .NotEqual(0)
-            .WithMessage("Owner name is required.");
+            .GreaterThan(0)
+            .WithMessage("Account Id is required.");
     }
 }
