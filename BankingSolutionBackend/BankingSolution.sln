@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingSolution.WebApi", "B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingSolution.Tests.Unit", "BankingSolution.Tests.Unit\BankingSolution.Tests.Unit.csproj", "{87E16A47-36E8-40E7-8195-628862226309}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingSolution.Tests.Integration", "BankingSolution.Tests.Integration\BankingSolution.Tests.Integration.csproj", "{E7C4B2D8-9CF8-4FB6-A633-7F2E1574839A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,18 @@ Global
 		{87E16A47-36E8-40E7-8195-628862226309}.Release|x64.Build.0 = Release|Any CPU
 		{87E16A47-36E8-40E7-8195-628862226309}.Release|x86.ActiveCfg = Release|Any CPU
 		{87E16A47-36E8-40E7-8195-628862226309}.Release|x86.Build.0 = Release|Any CPU
+		{E7C4B2D8-9CF8-4FB6-A633-7F2E1574839A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7C4B2D8-9CF8-4FB6-A633-7F2E1574839A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7C4B2D8-9CF8-4FB6-A633-7F2E1574839A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E7C4B2D8-9CF8-4FB6-A633-7F2E1574839A}.Debug|x64.Build.0 = Debug|Any CPU
+		{E7C4B2D8-9CF8-4FB6-A633-7F2E1574839A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E7C4B2D8-9CF8-4FB6-A633-7F2E1574839A}.Debug|x86.Build.0 = Debug|Any CPU
+		{E7C4B2D8-9CF8-4FB6-A633-7F2E1574839A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7C4B2D8-9CF8-4FB6-A633-7F2E1574839A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7C4B2D8-9CF8-4FB6-A633-7F2E1574839A}.Release|x64.ActiveCfg = Release|Any CPU
+		{E7C4B2D8-9CF8-4FB6-A633-7F2E1574839A}.Release|x64.Build.0 = Release|Any CPU
+		{E7C4B2D8-9CF8-4FB6-A633-7F2E1574839A}.Release|x86.ActiveCfg = Release|Any CPU
+		{E7C4B2D8-9CF8-4FB6-A633-7F2E1574839A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

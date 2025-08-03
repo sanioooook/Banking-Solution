@@ -1,6 +1,6 @@
-﻿namespace BankingSolution.Tests.Unit.Handlers;
+﻿namespace BankingSolution.Tests.Unit.Commands;
 
-using Application.Commands.CreateAccount;
+using BankingSolution.Application.Commands.CreateAccount;
 using Domain.Entities;
 using Domain.Interfaces;
 using Microsoft.Extensions.Logging;
@@ -81,7 +81,8 @@ public class CreateAccountHandlerTests
         var resultId = await _handler.HandleAsync(command, CancellationToken.None);
 
         Assert.Equal(10, resultId);
-        _accountRepositoryMock.Verify(r => r.CreateAsync(It.Is<Account>(a => a.Balance == 0), It.IsAny<CancellationToken>()), Times.Once);
+        _accountRepositoryMock.Verify(
+            r => r.CreateAsync(It.Is<Account>(a => a.Balance == 0), It.IsAny<CancellationToken>()), Times.Once);
     }
 
     [Fact]

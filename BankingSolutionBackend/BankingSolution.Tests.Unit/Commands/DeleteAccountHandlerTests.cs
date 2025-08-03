@@ -1,10 +1,10 @@
-﻿namespace BankingSolution.Tests.Unit.Handlers;
-
-using Application.Commands.DeleteAccount;
-using Domain.Entities;
-using Domain.Interfaces;
+﻿using BankingSolution.Application.Commands.DeleteAccount;
+using BankingSolution.Domain.Entities;
+using BankingSolution.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
 using Moq;
+
+namespace BankingSolution.Tests.Unit.Commands;
 
 public class DeleteAccountHandlerTests
 {

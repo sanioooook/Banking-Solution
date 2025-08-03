@@ -1,10 +1,10 @@
-﻿namespace BankingSolution.Tests.Unit.Handlers;
-
-using Application.Commands.UpdateAccount;
-using Domain.Entities;
-using Domain.Interfaces;
+﻿using BankingSolution.Application.Commands.UpdateAccount;
+using BankingSolution.Domain.Entities;
+using BankingSolution.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
 using Moq;
+
+namespace BankingSolution.Tests.Unit.Commands;
 
 public class UpdateAccountHandlerTests
 {
