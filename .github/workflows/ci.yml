@@ -7,7 +7,7 @@ on:
     branches: [master]
 
 env:
-  IMAGE_NAME: ghcr.io/${{ toLower(github.repository) }}
+  IMAGE_NAME: ghcr.io/sanioooook/banking-solution
 
 jobs:
   test:
