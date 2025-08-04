@@ -23,6 +23,9 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
+      - name: Change directory to BankingSolutionBackend
+        run: cd BankingSolutionBackend
+
       - name: Restore dependencies
         run: dotnet restore
 
@@ -64,7 +67,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ env.IMAGE_NAME }}:${{ steps.version.outputs.version }} -f BankingSolutionBackend/Dockerfile .
+          docker build -t ${{ env.IMAGE_NAME }}:${{ steps.version.outputs.version }} ./BankingSolutionBackend/
 
       - name: Push Docker image
         if: github.event_name == 'push'
