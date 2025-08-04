@@ -23,17 +23,17 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
-      - name: Change directory to BankingSolutionBackend
-        run: cd BankingSolutionBackend
-
       - name: Restore dependencies
+        working-directory: ./BankingSolutionBackend
         run: dotnet restore
 
       - name: Run Unit Tests
-        run: dotnet test BankingSolution.Tests.Unit/ --no-build --verbosity normal
+        working-directory: ./BankingSolutionBackend
+        run: dotnet test BankingSolution.Tests.Unit/ --verbosity normal
 
       - name: Run Integration Tests
-        run: dotnet test BankingSolution.Tests.Integration/ --no-build --verbosity normal
+        working-directory: ./BankingSolutionBackend
+        run: dotnet test BankingSolution.Tests.Integration/ --verbosity normal
 
   docker:
     name: Build and Publish Docker Image
