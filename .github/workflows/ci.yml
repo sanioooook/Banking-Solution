@@ -40,6 +40,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
 
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master' && needs.test.result == 'success' && (
+          contains(join(github.event.head_commit.modified, ','), 'BankingSolutionBackend/') ||
+          contains(join(github.event.head_commit.added, ','), 'BankingSolutionBackend/') ||
+          contains(join(github.event.head_commit.removed, ','), 'BankingSolutionBackend/')
+        )
+
     permissions:
       packages: write
       contents: read
