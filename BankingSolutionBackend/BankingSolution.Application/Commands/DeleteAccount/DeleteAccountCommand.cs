@@ -2,7 +2,7 @@ namespace BankingSolution.Application.Commands.DeleteAccount;
 
 using LiteBus.Commands.Abstractions;
 
-public class DeleteAccountCommand : ICommand<int>
+public class DeleteAccountCommand : ICommand
 {
     public int Id { get; set; }
 }

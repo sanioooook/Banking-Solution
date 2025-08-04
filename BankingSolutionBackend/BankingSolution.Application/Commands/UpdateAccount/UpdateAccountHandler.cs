@@ -4,7 +4,7 @@ using Domain.Interfaces;
 using LiteBus.Commands.Abstractions;
 using Microsoft.Extensions.Logging;
 
-public class UpdateAccountHandler : ICommandHandler<UpdateAccountCommand, int>
+public class UpdateAccountHandler : ICommandHandler<UpdateAccountCommand>
 {
     private readonly ILogger<UpdateAccountHandler> _logger;
     private readonly IAccountRepository _accountRepository;
@@ -15,7 +15,7 @@ public class UpdateAccountHandler : ICommandHandler<UpdateAccountCommand, int>
         _accountRepository = accountRepository;
     }
 
-    public async Task<int> HandleAsync(UpdateAccountCommand command, CancellationToken cancellationToken)
+    public async Task HandleAsync(UpdateAccountCommand command, CancellationToken cancellationToken)
     {
         var accountId = command.Id;
         var account = await _accountRepository.GetByIdAsync(accountId, cancellationToken);
@@ -23,7 +23,7 @@ public class UpdateAccountHandler : ICommandHandler<UpdateAccountCommand, int>
         if (account == null)
         {
             _logger.LogInformation("Updating account {Id} is failing.", command.Id);
-            return 0;
+            return;
         }
 
         if (!account.OwnerName.Equals(command.OwnerName))
@@ -34,7 +34,5 @@ public class UpdateAccountHandler : ICommandHandler<UpdateAccountCommand, int>
         await _accountRepository.UpdateAsync(account, cancellationToken);
 
         _logger.LogInformation("Updated account {Id}.", command.Id);
-
-        return account.Id;
     }
 }

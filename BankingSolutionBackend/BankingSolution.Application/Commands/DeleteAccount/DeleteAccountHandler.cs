@@ -23,7 +23,7 @@ public class DeleteAccountHandler : ICommandHandler<DeleteAccountCommand>
         if (account != null)
         {
             await _accountRepository.DeleteAsync(account, cancellationToken);
-            _logger.LogInformation("Deleted account {Id}.", account.Id);
+            _logger.LogInformation("Deleted account {Id}.", accountId);
         }
     }
 }
