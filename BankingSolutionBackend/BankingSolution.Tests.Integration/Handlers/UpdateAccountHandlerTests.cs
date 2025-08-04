@@ -21,13 +21,11 @@ public class UpdateAccountHandlerTests : IntegrationTestBase
         var handler = new UpdateAccountHandler(NullLogger<UpdateAccountHandler>.Instance,
             new AccountRepository(DbContext));
 
-        var result = await handler.HandleAsync(new UpdateAccountCommand
+        await handler.HandleAsync(new UpdateAccountCommand
         {
             Id = accId,
             OwnerName = "After"
         }, CancellationToken.None);
-
-        Assert.Equal(accId, result);
 
         var updated = await DbContext.Accounts.FindAsync(accId);
         Assert.Equal("After", updated.OwnerName);
@@ -39,13 +37,13 @@ public class UpdateAccountHandlerTests : IntegrationTestBase
         var handler = new UpdateAccountHandler(NullLogger<UpdateAccountHandler>.Instance,
             new AccountRepository(DbContext));
 
-        var result = await handler.HandleAsync(new UpdateAccountCommand
+        await handler.HandleAsync(new UpdateAccountCommand
         {
             Id = 999,
             OwnerName = "NoOne"
         }, CancellationToken.None);
 
-        Assert.Equal(0, result);
+        Assert.Equal(0, await DbContext.Accounts.CountAsync());
     }
 
     [Fact]
@@ -60,7 +58,7 @@ public class UpdateAccountHandlerTests : IntegrationTestBase
         var handler = new UpdateAccountHandler(NullLogger<UpdateAccountHandler>.Instance,
             new AccountRepository(DbContext));
 
-        var result = await handler.HandleAsync(new UpdateAccountCommand
+        await handler.HandleAsync(new UpdateAccountCommand
         {
             Id = accId,
             OwnerName = "Same"

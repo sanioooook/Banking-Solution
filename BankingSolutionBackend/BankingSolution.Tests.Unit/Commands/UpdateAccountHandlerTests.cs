@@ -34,10 +34,9 @@ public class UpdateAccountHandlerTests
         var command = new UpdateAccountCommand { Id = 1, OwnerName = "NewName" };
 
         // Act
-        var result = await _handler.HandleAsync(command, CancellationToken.None);
+        await _handler.HandleAsync(command, CancellationToken.None);
 
         // Assert
-        Assert.Equal(1, result);
         Assert.Equal("NewName", existing.OwnerName);
         _repoMock.Verify(r => r.UpdateAsync(existing, It.IsAny<CancellationToken>()), Times.Once);
     }
@@ -52,9 +51,8 @@ public class UpdateAccountHandlerTests
 
         var command = new UpdateAccountCommand { Id = 2, OwnerName = "SameName" };
 
-        var result = await _handler.HandleAsync(command, CancellationToken.None);
+        await _handler.HandleAsync(command, CancellationToken.None);
 
-        Assert.Equal(2, result);
         _repoMock.Verify(r => r.UpdateAsync(It.IsAny<Account>(), It.IsAny<CancellationToken>()), Times.Once);
     }
 
@@ -66,9 +64,8 @@ public class UpdateAccountHandlerTests
 
         var command = new UpdateAccountCommand { Id = 99, OwnerName = "DoesNotExist" };
 
-        var result = await _handler.HandleAsync(command, CancellationToken.None);
+        await _handler.HandleAsync(command, CancellationToken.None);
 
-        Assert.Equal(0, result);
         _repoMock.Verify(r => r.UpdateAsync(It.IsAny<Account>(), It.IsAny<CancellationToken>()), Times.Never);
     }
 
