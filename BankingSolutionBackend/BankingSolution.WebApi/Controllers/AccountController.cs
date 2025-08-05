@@ -42,7 +42,7 @@ public class AccountController : ControllerBase
     }
 
     /// <summary>Gets the account.</summary>
-    /// <param name="id">The identifier.</param>
+    /// <param name="id">The account identifier.</param>
     [HttpGet("{id:int}")]
     public async Task<ActionResult<IEnumerable<AccountDto>>> GetAccount(int id)
     {
@@ -60,11 +60,11 @@ public class AccountController : ControllerBase
     }
 
     /// <summary>Deletes the account.</summary>
-    /// <param name="command">The command.</param>
-    [HttpDelete]
-    public async Task<ActionResult> DeleteAccount(DeleteAccountCommand command)
+    /// <param name="id">The account identifier.</param>
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult> DeleteAccount(int id)
     {
-        await _commandMediator.SendAsync(command);
+        await _commandMediator.SendAsync(new DeleteAccountCommand(id));
         return Ok();
     }
 }

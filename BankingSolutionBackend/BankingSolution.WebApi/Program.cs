@@ -1,3 +1,4 @@
+using System.Reflection;
 using BankingSolution.Application.Commands.CreateAccount;
 using BankingSolution.Application.Queries.GetAllAccounts;
 using BankingSolution.Domain.Interfaces;
@@ -10,6 +11,7 @@ using LiteBus.Commands.Extensions.MicrosoftDependencyInjection;
 using LiteBus.Messaging.Extensions.MicrosoftDependencyInjection;
 using LiteBus.Queries.Extensions.MicrosoftDependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -38,7 +40,21 @@ builder.Services.AddLiteBus(liteBus =>
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "Banking API",
+        Description = "An ASP.NET Core Web API for managing transactions",
+    });
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFilename);
+    if (File.Exists(xmlPath))
+    {
+        options.IncludeXmlComments(xmlPath);
+    }
+});
 
 builder.Services.AddValidatorsFromAssemblyContaining<CreateAccountValidator>();
 builder.Services.AddFluentValidationAutoValidation();

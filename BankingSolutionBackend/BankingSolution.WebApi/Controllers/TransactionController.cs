@@ -31,8 +31,8 @@ namespace BankingSolution.WebApi.Controllers
             return Ok(txs);
         }
 
-        /// <summary>Gets the transaction by accountId.</summary>
-        /// <param name="id">The identifier.</param>
+        /// <summary>Gets the transaction by account id.</summary>
+        /// <param name="id">The account identifier.</param>
         [HttpGet("{id:int}")]
         public async Task<ActionResult<IEnumerable<TransactionDto>>> GetTransaction(int id)
         {
