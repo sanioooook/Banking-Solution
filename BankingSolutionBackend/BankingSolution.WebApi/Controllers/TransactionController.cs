@@ -1,4 +1,4 @@
-﻿using BankingSolution.Application.Commands.CreateTransaction;
+using BankingSolution.Application.Commands.CreateTransaction;
 using BankingSolution.Application.Queries.GetAllTransactions;
 using LiteBus.Commands.Abstractions;
 

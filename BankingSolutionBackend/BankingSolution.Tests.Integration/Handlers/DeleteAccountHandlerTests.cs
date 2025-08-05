@@ -19,7 +19,7 @@ public class DeleteAccountHandlerTests : IntegrationTestBase
 
         var handler =
             new DeleteAccountHandler(NullLogger<DeleteAccountHandler>.Instance, new AccountRepository(DbContext));
-        await handler.HandleAsync(new DeleteAccountCommand { Id = acc.Id }, CancellationToken.None);
+        await handler.HandleAsync(new DeleteAccountCommand(acc.Id), CancellationToken.None);
 
         var result = await DbContext.Accounts.FindAsync(acc.Id);
         Assert.Null(result);
@@ -31,7 +31,7 @@ public class DeleteAccountHandlerTests : IntegrationTestBase
         var handler =
             new DeleteAccountHandler(NullLogger<DeleteAccountHandler>.Instance, new AccountRepository(DbContext));
         var exception = await Record.ExceptionAsync(() =>
-            handler.HandleAsync(new DeleteAccountCommand { Id = 9999 }, CancellationToken.None)
+            handler.HandleAsync(new DeleteAccountCommand(9999), CancellationToken.None)
         );
 
         Assert.Null(exception);
@@ -49,7 +49,7 @@ public class DeleteAccountHandlerTests : IntegrationTestBase
 
         var handler =
             new DeleteAccountHandler(NullLogger<DeleteAccountHandler>.Instance, new AccountRepository(DbContext));
-        await handler.HandleAsync(new DeleteAccountCommand { Id = acc1.Id }, CancellationToken.None);
+        await handler.HandleAsync(new DeleteAccountCommand(acc1.Id), CancellationToken.None);
 
         Assert.Null(await DbContext.Accounts.FindAsync(acc1.Id));
         Assert.NotNull(await DbContext.Accounts.FindAsync(acc2.Id));

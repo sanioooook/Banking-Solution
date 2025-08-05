@@ -31,7 +31,7 @@ public class DeleteAccountHandlerTests
         _repoMock.Setup(r => r.DeleteAsync(existing, It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
 
-        var command = new DeleteAccountCommand { Id = 1 };
+        var command = new DeleteAccountCommand(1);
 
         // Act
         await _handler.HandleAsync(command, CancellationToken.None);
@@ -46,7 +46,7 @@ public class DeleteAccountHandlerTests
         _repoMock.Setup(r => r.GetByIdAsync(It.IsAny<int>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync((Account?)null);
 
-        var command = new DeleteAccountCommand { Id = 99 };
+        var command = new DeleteAccountCommand(99);
 
         await _handler.HandleAsync(command, CancellationToken.None);
 
@@ -61,7 +61,7 @@ public class DeleteAccountHandlerTests
         _repoMock.Setup(r => r.GetByIdAsync(5, It.IsAny<CancellationToken>()))
             .ReturnsAsync(account);
 
-        var command = new DeleteAccountCommand { Id = 5 };
+        var command = new DeleteAccountCommand(5);
 
         await _handler.HandleAsync(command, CancellationToken.None);
 
@@ -81,7 +81,7 @@ public class DeleteAccountHandlerTests
         _repoMock.Setup(r => r.GetByIdAsync(It.IsAny<int>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync((Account?)null);
 
-        var command = new DeleteAccountCommand { Id = 123 };
+        var command = new DeleteAccountCommand(123);
 
         await _handler.HandleAsync(command, CancellationToken.None);
 
